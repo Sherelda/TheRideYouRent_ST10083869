@@ -1,0 +1,48 @@
+﻿@model TheRideYouRent_ST10083869.Models.Late
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Calculate</h1>
+
+<h4>Enter Values</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LateDays" class="control-label"></label>
+                <input asp-for="LateDays" class="form-control" />
+                <span asp-validation-for="LateDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fee" class="control-label"></label>
+                <input asp-for="Fee" class="form-control" />
+                <span asp-validation-for="Fee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Operations</label>
+                <select name="operations" class="form-control" asp-items="ViewBag.op"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Calculate" class="btn btn-primary" />
+            </div>
+            
+            <div class="form-group">     
+                <label class="comtrol-label">@ViewBag.Fine</label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
